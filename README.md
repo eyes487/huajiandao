@@ -23,6 +23,12 @@ cd huajiandao
 npm install
 ```
 
+```
+数据库
+在MySQL文件中运行 mye_q.sql 文件
+```
+
+
 3. 运行项目
 
 ```
