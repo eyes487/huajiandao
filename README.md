@@ -2,8 +2,7 @@
 # huajiandao
 * 使用Express4+Mysql连接数据库，实现后台逻辑。前端使用httml/css/js/ejs实现前台页面渲染
 * 项目实现包括网站展示页面，和后台管理系统
-* 我新建了一个QQ群，各位如果有任何与该项目有关的问题，或者想交流下ReactNative相关的技术，都可以加进来：419213248
-* iOS的朋友如果运行项目出现问题，可以参考<a href="./iOS-README.md">这个文档</a>
+
 
 # <a href="http://118.89.39.22:8888/myE&Q.html">在线访问地址</a>
 网站页面访问可使用（账号：17808323471，密码：111111）后台管理系统登录（账号：admin，密码：admin）
@@ -13,7 +12,7 @@
 1. 克隆代码：
 
 ```
-git clone git@github.com:yubo725/rn-wechat.git
+git clone https://github.com/eyes487/huajiandao.git
 ```
 
 2. 进入项目根目录并安装依赖：
