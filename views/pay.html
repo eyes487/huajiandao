@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="stylesheets/pay.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.css">
+    <link rel="stylesheet" href="stylesheets/header&footer.css">
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script src="./layer/layer.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="headerTittle">
+                <span class="logo"></span>
+                <span class="logoTittle">我的收银台</span>
+            </div>
+            <div class="headerRight">
+                <p>支付宝账户&nbsp;:<span class="tel" id="tel"></span>&nbsp;&nbsp;|&nbsp;&nbsp;唯一热线&nbsp;:&nbsp;95188</p>
+            </div>
+        </div>
+    </header>
+    <section >
+        <div class="container">
+            <div class="goodsMessage">
+                <img src="images/payImg/erweima.png">
+                <p class="goodsTitle"><%-data[0].ci_name%>&nbsp;<span id="number"></span>&nbsp;件<br><span class="goodsSeller">花间道</span></p>
+                <div class="goodsPrice"><p><span class="price"><%-data[0].ci_price%></span>&nbsp;元</p></div>
+            </div>
+            <div class="payMethod">
+                <ul>
+                    <li>
+                        <input type="radio" class="radio1" checked>
+                        <div class="bankLogo">
+                            <img src="images/payImg/CCB_s.png">
+                        </div>
+                        <div class="bankName">中国建设银行</div>
+                        <span class="myType">储蓄卡|网银</span>
+                        <div class="payPrice"><p>支付<span class="price"><%-data[0].ci_price%></span>&nbsp;元</p></div>
+                    </li>
+                    <li>
+                        <input type="radio" class="radio1">
+                        <div class="bankLogo">
+                            <img src="images/payImg/ABC_s.png">
+                        </div>
+                        <div class="bankName">中国农业银行</div>
+                        <span class="myType">储蓄卡|网银</span>
+                        <div class="payPrice"><p>支付<span class="price"><%-data[0].ci_price%></span>&nbsp;元</p></div>
+                    </li>
+                    <li>
+                        <input type="radio" class="radio1">
+                        <div class="bankLogo">
+                            <img src="images/payImg/BALANCE_s.png">
+                        </div>
+                        <div class="bankName">余额</div>
+                        <span class="myType"></span>
+                        <div class="payPrice"><p>支付<span class="price"><%-data[0].ci_price%></span>&nbsp;元</p></div>
+                    </li>
+                    <li>
+                        <input type="radio" class="radio1">
+                        <div class="bankLogo">
+                            <img src="images/payImg/MONEYFUND_s.png">
+                        </div>
+                        <div class="bankName">余额宝</div>
+                        <span class="myType"></span>
+                        <div class="payPrice"><p>支付<span class="price"><%-data[0].ci_price%></span>&nbsp;元</p></div>
+                    </li>
+                    <li>
+                        <input type="radio" class="radio1">
+                        <div class="bankLogo">
+                            <img src="images/payImg/PCREDIT_s.png">
+                        </div>
+                        <div class="bankName">花呗</div>
+                        <span class="myType"></span>
+                        <div class="payPrice"><p>支付<span class="price"><%-data[0].ci_price%></span>&nbsp;元</p></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="more">更多支付方式</div>
+            <input type="password" placeholder="支付密码" class="pwd">
+            <button onclick="atoncePay()" id="submit" class="submit">立即支付</button>
+        </div>
+    </section> 
+    <script src="javascripts/pay.js"></script>
+</body>
+</html>

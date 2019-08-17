@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="stylesheets/productDetails.css">
+<link rel="stylesheet" href="../layer/skin/layer.css"/>
+<%-include("./header.html")%>
+<div class="productDetails">
+    <!-- 单个产品详情左边 -->
+    <div class="detailsLeft">
+        <%for(j=0;j< data.length;j++){%>
+        <!-- 单个产品中间大图片 -->
+        <div class="detailsCentreImg">
+            <img id="img1" style="display: none;" src="<%-data[j].img_src1%>" alt="">
+            <img id="img2" style="display: block;" src="<%-data[j].img_src2%>" alt="">
+        </div>
+        <div class="detailsLeftImg">
+            <a onclick="imga1()" href="javascript:void(0)"><img src="<%-data[j].img_src1%>" alt=""></a>
+            <a onclick="imga2()" href="javascript:void(0)"><img src="<%-data[j].img_src2%>" alt=""></a>
+        </div>
+    </div>
+    <!--单个产品详情右边-->
+    <div class="detailsRight">
+        <h3><%-data[j].ci_name%></h3>
+        <div class="detailContent">
+            <p>材料： <%-data[j].details%></p>
+            <p>包装： </p>
+            <p>花语： </p>
+            <p>附送： 免费附送精美贺卡，代写您的祝福。(您下单时可填写留言栏)</p>
+            <p>配送： 本地区各市县、乡镇、街道（市区内免费配送）</p>
+            <p>说明： 下单后1-3个小时发货</p>
+        </div>
+        <div class="detailsRightColor">
+            <div class="unmButton">
+                <span> 数量：</span>
+                <button onclick="unmButton1()">-</button>
+                <input id="unmInput" type="text" value="1">
+                <button onclick="unmButton2()">+</button>
+            </div>
+        </div>
+        <div class="detailsRightSize">
+            <p>价格： <span>￥<%-data[j].ci_price%>.00</span></p>
+        </div>
+        <div class="addCart">
+            <a onclick="test()"><button>立即购买</button></a>
+            <button style="margin-left: 20px;background:#96602E" onclick="addCart()">添加购物车</button>
+        </div>
+    </div>
+    <%}%>
+    <div class="detailImg">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<%-include("../public/footer.html")%>
+<script type="text/javascript" src="javascripts/jquery.js"></script>
+<script src="javascripts/myAjax.js"></script>
+<script src="../layer/layer.js"></script>
+<script src="javascripts/productDetails.js"></script>
+

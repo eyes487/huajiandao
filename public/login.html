@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./stylesheets/font-awesome.css">
+    <script  src="javascripts/jquery.js"></script>
+    <script src="./javascripts/bootstrap.js"></script>
+    <script src="../layer/layer.js"></script>
+    <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/login&regist.css">
+    <title>登录</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./images/login_bg.jpg" alt="">
+            </div>
+        </div>
+    </header>
+    <div class="slogan">
+        <p>保质、高效、售后</p>
+    </div>
+    <div class="rose">
+        <img src="./images/login_flower1.png" alt="">
+    </div>
+    <div class="lily">
+        <img src="./images/login_flower2.png" alt="">
+    </div>
+    <div class="login">
+        
+        <div class="content">
+            <div id="title">
+                <span>登录</span>
+                <span><a href="myE&Q.html">回到首页<i class="fa fa-angle-double-right"></i></a></span>
+            </div>
+            <hr>
+            <form class="form-horizontal" action="post">
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" class="userName" placeholder="请输入用户名（手机号）" aria-describedby="basic-addon1">
+                    <span class="hint"></span>
+                </div>
+                <!-- <br> -->
+                &nbsp;
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon3"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control" class="pwd" placeholder="请输入密码" aria-describedby="basic-addon2">
+                    <span class="hint"></span>
+                </div>
+                &nbsp;
+                <div class="input-group" style="width:60%">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-check-square"></i></span>
+                    <input type="text" class="form-control checkInput" aria-describedby="basic-addon3">
+                </div>
+                <div class="checkCode" id="code" onclick="createCode()"><i></i></div>
+                <p><a href="#">忘记密码？</a></p>
+                <div>
+                    <input type="checkbox">记住我
+                </div>
+                <button type="button" class="lrBtn">登录</button>
+                <button type="button"><a href="regist.html">注册</a></button>
+            </form>
+        </div>
+    </div>
+    <script src="./javascripts/myAjax.js"></script>
+    <script src="./javascripts/login.js"></script>
+</body>
+</html>

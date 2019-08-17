@@ -1,0 +1,112 @@
+
+    <link rel="stylesheet" href="stylesheets/customization.css">
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/font-awesome.css">
+    <link rel="stylesheet" href="./stylesheets/lc-date.css">
+    <link rel="stylesheet" href="../layer/skin/layer.css"/>
+    <script src="./javascripts/bootstrap.js"></script>
+    <script src="./layer/layer.js"></script>
+    <script src="javascripts/myAjax.js"></script>  
+    <script src="javascripts/lc_date.js"></script>  
+
+    <%-include("./header.html")%>
+    <div class="content">
+        <div class="main">
+            <div class="std">
+                <div class="section">
+                    <img src="./images/customization/u6.jpg" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="desc-text">
+                    <p>花间道--中国鲜花领先品牌</p>
+                    <p>全国已有1160家门店，拥有3万个鲜花配送点</p>
+                    <p>送花送惊喜就选花间道</p>
+                    <p>为您打造专属于您的“浪漫礼物”</p>
+                </div>
+                <div class="hidden-xs">
+                    
+                </div>
+                <div class="box-down">
+                    <a href=""></a>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="container">
+                    <div class="desc-text">
+                        <p>花间道高级私人定制，予您一场优雅与奢华的专属体验</p>
+                    </div>
+                    <div class="order-left">
+                        <img src="./images/customization/20140603-tadashishoji-brandbook-0880-1-highres.jpg" alt="">
+                    </div>
+                    <div class="order-right">
+                        <p>预约高级私人定制服务电话：+86 021 3252 8669</p>
+                        <p>地址：成都市武侯区天府大道209号</p>
+                        <p>服务时间：周二至周六 10:00~19:00</p>
+                        <a  data-toggle="modal"  data-target="#addModal">在线预购</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- 预约模态框 -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            预约
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <form> -->
+                            <div class="form-group">
+                                <label for="stockCode" class="col-md-3 col-md-offset-1"><span style="color:red">*</span>姓名：</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control col-md-6" required name="name" id="name" placeholder="请输入姓名"> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goodsCode" class="col-md-3 col-md-offset-1"><span style="color:red">*</span>手机号：</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control col-md-6" max="11" name="tel" id="tel" placeholder="不超过11位">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goodsName" class="col-md-3 col-md-offset-1"><span style="color:red">*</span>花的款式：</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="kind" required name="kind" placeholder="请输入商品名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="insertTime" class="col-md-3 col-md-offset-1"><span style="color:red">*</span>预约时间：</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="time" readonly="readonly" name="time" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="stockAmount" class="col-md-3 col-md-offset-1"><span style="color:white">*</span> 备注：</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" min="0" name="remark" id="remark" placeholder="不超过200字">
+                                </div>
+                            </div>
+                        <!-- </form> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="subscribe()">提交</button>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+    <%-include("../public/footer.html")%> 
+    <script src="./javascripts/customization.js"></script>

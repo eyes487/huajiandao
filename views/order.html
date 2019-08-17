@@ -1,0 +1,251 @@
+
+<%-include("header.html")%>
+<link rel="stylesheet" href="css/order.css">
+<div class="wrap">
+<!--核对订单信息-->
+<div class="content">
+    <div class="main-title-module">
+        <h2 class="main-title-txt">核对订单信息</h2>
+    </div>
+    <div class="confirm-module">
+        <h2 class="module-title">收货人信息</h2>
+        <div class="address-info">
+            <ul class="adress-list">
+                <li class="address-item">
+                    <div class="inner">
+                        <div class="item-top">
+                            <span name="">刨冰</span>
+                            <span name="">1382026168</span>
+                        </div>
+                        <div class="cl">
+                            <p class="mlellipsis">
+                                <span>广东省</span>
+                                <span>潮州市</span>
+                                <span>潮安区</span>
+                                <span>南京路</span>
+                            </p>
+                        </div>
+                    </div>
+                    <ul class="operations">
+                        <li class="operations-address-edit" onclick="btn()">编辑</li>
+                        <li class="operations-address-del">删除</li>
+                    </ul>
+                </li>
+                <li class="new">
+                    <span class="inner">添加新地址</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="confirm-module">
+        <h2 class="module-title">支付方式 <span id="j_payTypeText">已选择：在线支付</span></h2>
+        <div class="delivery-info">
+            <div class="pay-method">
+                在线支付
+                <i></i>
+            </div>
+            <div class="pay-method-more">
+                更多支付方式
+                <b>></b>
+            </div>
+        </div>
+        <div class="pay-method-help cut">
+            <p>目前仅支持支付宝</p>
+        </div>
+    </div>
+    <div class="confirm-module">
+        <h2 class="module-title">确定商品 </h2>
+        <ul class="cart-head">
+            <li class="goods-col">商品名称</li>
+            <li class="price-col">价格(元)</li>
+            <li class="quantity-col">数量</li>
+            <li class="benefit-col">优惠</li>
+            <li class="sum-col">小计</li>
+        </ul>
+        <div class="prod-list-wrap">
+            <div class="order-table">
+                <ul class="prod-line">
+                    <li class="prod-pic">
+                        <%for(i=0;i< data.length;i++){%>
+                        <div class="figure">
+
+                            <!--<img src="" alt="">-->
+
+                            <img src="<%-data[i].img_src1%>" alt="">
+
+                            <!--<img src="images/eqfour.png" alt="">-->
+
+                        </div>
+                        <ul>
+                            <li class="goods-col">
+                                <a class="goods-link" href="" id="productName"><%-data[i].ci_name%></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="price-col"><%-data[i].ci_price%></li>
+
+                    <li id="number1"> 1</li>
+                    <li class="J_promotion-price">0.00</li>
+                    <li class="J_promotion-price" id="ubtotal"><%-data[i].ci_price%></li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="confirm-module">
+        <div class="module-title">订单备注</div>
+        <textarea name="J_orderMemo" id="remarks" cols="30" rows="7" placeholder="限300字（若有其它需求，请联系果园在线客服）"></textarea>
+    </div>
+    <div class="confirm-module">
+        <div class="other-info">
+            <ul>
+                <li class="order-sum">
+                    <p>
+                        <span>已选</span>
+                        <em id="number">1</em>
+                        件商品，合计(不含运费):
+                    </p>
+                    <p>
+                        <span class="price" >
+                            <dfn>￥</dfn><span id="total"><%-data[0].ci_price%></span>
+                        </span>
+                    </p>
+                </li>
+                <li class="order-sum">
+                    <p>
+                        <span>运费:</span>
+                    </p>
+                    <p>
+                        <span class="price">
+                            <dfn>￥</dfn>0.00
+                        </span>
+                    </p>
+                </li>
+                <li class="order-sum">
+                    <p>
+                        <span>优惠:</span>
+                    </p>
+                    <p>
+                        <span class="red">
+                            <dfn>-￥</dfn>0.00
+                        </span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="real-price-box">
+            <label>应付总额：</label>
+            <span class="real-price red" >
+                <dfn>￥</dfn>
+                <span id="moneyAll"><%-data[0].ci_price%></span>
+            </span>
+            <ul class="delivery-address">
+                <li class="item">
+                    <label>收件人: </label>
+                    <span>刨冰 </span><span id="tel">13820261686</span>
+                </li>
+                <li class="item">
+                    <label>配送地址： </label>
+                    <span id="receiveAddress">广东省潮州市潮安区南京路</span>
+                </li>
+            </ul>
+        </div>
+        <div class="confirm-btn-box">
+            <button type="button" class="btn--lg" title="提交订单">
+                <!--<a href="file:///C:/Users/Administrator/Desktop/svn/trunk/engineering/source/public/subscribed_payment.html"></a>-->
+                    <!-- <a href="pay.html?id=<%-data[0].ci_id%>"> -->
+                        <i class="btn-inner" onclick="pay()">提交订单</i>
+                    <!-- </a> -->
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="panelwrap" style="display: none">
+<div class="mask"></div>
+<div class="panel dialog-container">
+    <a href="javascript:void(0)" class="icon-close" onclick="btn()">
+        <i class="code-close">X</i>
+    </a>
+    <div class="dialog-title">修改收货地址</div>
+    <form id="shipping-address-new-edit">
+        <div class="address-info-new">
+            <ul>
+                <li>
+                    <span>* 收货人:</span>
+                    <div>
+                        <input type="text">
+                    </div>
+                </li>
+                <li>
+                    <span>* 手机号码:</span>
+                    <div>
+                        <input type="text">
+                    </div>
+                </li>
+                <li>
+                    <span>* 收货地址:</span>
+                    <div>
+                        <div class="j_ReginContriner">
+                            <select name="" id="first">
+                                <option value="">请选择</option>
+                                <option value="">四川</option>
+                                <option value="">广州</option>
+                                <option value="">上海</option>
+                                <option value="">北京</option>
+                                <option value="">深圳</option>
+                                <option value="">西藏</option>
+                            </select>
+                            <select name="" id="first">
+                                <option value="">请选择</option>
+                                <option value="">四川</option>
+                                <option value="">广州</option>
+                                <option value="">上海</option>
+                                <option value="">北京</option>
+                                <option value="">深圳</option>
+                                <option value="">西藏</option>
+                            </select>
+                            <select name="" id="first">
+                                <option value="">请选择</option>
+                                <option value="">四川</option>
+                                <option value="">广州</option>
+                                <option value="">上海</option>
+                                <option value="">北京</option>
+                                <option value="">深圳</option>
+                                <option value="">西藏</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span>* 详细地址:</span>
+                    <div>
+                        <input type="text" value="南京路">
+                    </div>
+                </li>
+                <li>
+                    <span></span>
+                    <div>
+                        <div class="j_ReginContriner">
+                            <input name="isDefault" type="checkbox" id="i-da-chkbox" value="南京路">设为默认地址
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="area-pane-btns">
+                        <button type="button" class="btn--md" id="saveAddress">
+                            <i class="btn-inner">保存</i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+</div>
+<%-include("../public/footer.html")%>
+<script src="javascripts/order.js"></script>
+
+
+
+

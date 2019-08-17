@@ -1,0 +1,75 @@
+
+    <link rel="stylesheet" href="stylesheets/shoppingCart.css">
+    
+        <%-include("./header.html")%>
+    <!-- 购物车 -->
+    <div class="shoppingCartTop">
+        <h3>购物车</h3>
+    </div>
+    <div class="shoppingCartData">
+        <!-- 全选数据 -->
+        <div class="shoppingCartDataTop">
+            <div class="CartDataTopcheck">
+                <input type="checkbox" id="checkAll" checked='false' ><span>全选</span>
+            </div>
+            <div class="CartDataTopData">
+                <span>商品信息</span>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="CartDataTopPrice">
+                <span>单价</span>
+            </div>
+            <div class="CartDataTopQuantity">
+                <span>数量</span>
+            </div>
+            <div class="CartDataTopSum">
+                <span>金额</span>
+            </div>
+            <div class="CartDataTopOperation">
+                <span>操作</span>
+            </div>
+        </div>
+        <!-- 购物车添加商品列 -->
+        <%data.forEach(function(data){%>
+        <div class="cartAddLine">
+            <div class="cartAddLineChoice" id="cartAddLineChoice">
+                <input class="cartAddLineChoiceInput" id="cartAddLineChoiceInput" type="checkbox" >
+            </div>
+            <div class="cartAddLineMessage">
+                <div class="cartAddLineMessageDiv">
+                    <img src=<%-data.img_src1%> alt="">
+                </div>
+                <div class="cartAddLineMessageA">
+                    <a href=""><%-data.ci_name%></a>
+                </div>
+            </div>
+            <div class="cartAddLinePrice">
+                <p>￥<%-data.ci_price%>.00</p>
+            </div>
+            <div class="cartAddLineNum">
+                <span><%-data.sc_quantity%></span>
+            </div>
+            <div class="cartAddLineSum">
+                <p class="price" ><%-data.ci_price*data.sc_quantity%>.00</p>
+            </div>
+            <div class="cartAddLineOperation">
+                <button onclick="deleteCart(<%-data.sc_id%>)">删除</button>
+            </div>
+        </div>
+        <%})%>
+        
+        <!-- 购物车结算金额 -->
+        <div class="cartTotal">
+            <div class="cartTotalRight">
+                <p>合计：</p>
+                <span id="priceAll">0.00</span>
+                <button id="balance">结算</button>
+            </div>
+        </div>
+    </div>
+    <%-include("../public/footer.html")%> 
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/myAjax.js"></script>
+    <script src="javascripts/shoppingCart.js"></script>
+    <script src="../layer/layer.js"></script>

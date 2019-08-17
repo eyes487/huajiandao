@@ -1,0 +1,151 @@
+@color:black;
+@floatleft:left;
+@fontSize:16px;
+@listStyle:none;
+*{
+    margin: 0;
+    padding: 0;
+}
+// 头部
+#header:before,#header:after{
+    display: table;
+    content: "";
+}
+#header:after{
+    clear: both;
+}
+.headerbox{
+    width: 100%;
+    height: 100px;
+}
+.container{
+    width: 1206px;
+    margin: 0 auto;
+}
+#header{
+    width: 100%;
+    *zoom: 1;
+    z-index: 99;
+    line-height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    .logo{
+        width: 160px;
+        height: 100px;
+        float: @floatleft;
+        // margin-left: 100px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    ul{
+        // float: @floatleft;
+        margin-left: 50px;
+        li{
+            list-style: @listStyle;
+            // float: @floatleft;
+            margin-left: 40px;
+            input{
+                color: #71777d;
+                border: none;
+                outline: none;
+                padding-left: 12px;
+            }
+            i{
+                color: #71777d;
+            }
+            a{
+                color: @color;
+                font-size: @fontSize;
+                text-decoration: none;
+                &:hover{
+                    color:#ef4b28;
+                }
+            }
+
+        }
+    }
+    .item{
+        li{
+            float:left;
+        }
+    }
+    .searchList{
+        li{
+            float:right;
+        }
+    }
+}
+
+
+#seek{
+    color: @color;
+    span{
+        width: 260px;
+        border-bottom: 1px solid #D9DDE1;
+    }
+}
+#enroll{ 
+    
+        #headImg{
+            width: 40px;
+            height: 40px;
+        }
+    
+    a{
+        margin-left: 20px;
+    }
+    i{
+        font-size: 20px;
+    }
+}
+// 尾部
+footer:before,footer:after{
+    display: table;
+    content: "";
+}
+footer:after{
+    clear: both;
+}
+footer{
+    color: @color;
+    *zoom: 1;
+    .title{
+        // margin-left: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:space-around; 
+        .list{
+            list-style: @listStyle;
+            font-size: @fontSize;
+            // float: @floatleft;
+            margin-left: 70px;
+            font-weight: bold;
+            line-height: 40px;
+            text-align: center;
+            li{
+                list-style: @listStyle;
+                font-size: 14px;
+                font-weight: 100;
+                a{
+                    text-decoration: none;
+                    color: @color;
+                }
+            }
+            .time{
+                font-size: 8px;
+                line-height: 10px;
+            }
+            img{
+                margin-left: 20px;
+            }
+        }
+    }
+    
+}
+.layui-layer-dialog{
+    top:150px !important;
+}

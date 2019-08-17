@@ -1,0 +1,45 @@
+
+    <link rel="stylesheet" href="stylesheets/contactUs.css">
+
+    <%-include("./header.html")%>
+        <section>
+            <div class="container">
+                <div class="banner"></div>
+                <aside>
+                    <form action="contactUs.do" method="post">
+                        <span> 姓名：</span> 
+                        <input type="text" name="name" placeholder="请输入姓名"><br>
+                        <span>电话：</span>
+                        <input type="text" name="tel" placeholder="请留下您的电话"><br>
+                        <span>留言：</span>
+                        <textarea name="message" id="message" cols="35" rows="10" placeholder="请输入您的留言"></textarea><br>
+                        <input type="button" value="发送" id="submit">
+                    </form>
+                </aside>
+                <div class="contact">
+                    <h2>联系我们</h2>
+                    <div class="content">
+                        <div class="leftArea">
+                            <img src="images/myE&QImg/connection.png" alt="">
+                        </div>
+                        <div class="rightArea">
+                            <h3>花间道 鲜花专卖店</h3>
+                            <p>联系人：肖女士</p>
+                            <p>联系电话：18408325689</p>
+                            <p>邮箱：18408323598@163.com</p>
+                            <p>地址：四川成都市天府广场</p>
+                        </div>
+                    </div>  
+                    <div class="mapAress" id="allmap">
+
+                    </div>  
+                </div>
+            </div>    
+        </section>
+        <%-include("../public/footer.html")%>        
+        <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.12&key=89443754ab7f65123c9ec431135a456f"></script> 
+        <script src="javascripts/myAjax.js"></script>   
+        <script src="javascripts/contactUs.js"></script>
+        <script src="javascripts/jquery.js"></script>
+        <script src="../layer/layer.js"></script>
+        

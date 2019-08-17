@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>花间道后台管理系统</title>
+    <!-- <link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/55/sjckzedf/lanrenzhijia.css"> -->
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script src="javascripts/lc_date.js"></script>  
+    <link rel="stylesheet" href="./stylesheets/backstage.css">
+    <link rel="stylesheet" href="./stylesheets/font-awesome.css">
+    <link rel="stylesheet" href="./lib/bootstrap-table/bootstrap-table.css">
+    <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/lc-date.css">
+    <script src="./javascripts/backstage.js"></script>
+    <script src="./lib/bootstrap-table/bootstrap-table.js"></script>
+    <script src="./lib/bootstrap-table/bootstrap-table-zh-CN.js"></script>
+    <script src="./javascripts/bootstrap.js"></script>
+    <script src="./layer/layer.js"></script>
+    
+</head>
+<body>
+    <div id="top">
+          <div class="backLogo"><img src="images/manage_logo.png"/>后台管理系统</div>
+            <div id="topTags">
+                <ul>
+                </ul>
+                <button type="button" class="exit btn btn-warning" onclick="quit()"><i class="fa fa-power-off"></i> 退出</button>
+            </div>
+    </div>
+    <div id="main"> 
+        <div id="leftMenu">
+            <ul>
+                <li class="btn btn-primary"><i class="fa fa-home" style="font-size:22px;top:4px;"></i> 首 页 </li>
+                <li class="btn btn-primary"><i class="fa fa-file-text"></i> 订单管理</li>
+                <li class="btn btn-primary"><i class="fa fa-user" style="font-size:20px;"></i> 用户管理</li>
+                <li class="btn btn-primary"><i class="fa fa-institution"></i> 库存管理</li>
+                <li class="btn btn-primary"><i class="fa fa-envelope"></i> 联系我们</li>
+                <li class="btn btn-primary"><i class="fa fa-phone" style="font-size:20px;"></i>  预 约 </li>
+            </ul>
+        </div>
+        <div id="content">
+        <div id="welcome" class="content" style="display:block;">
+            <div align="center">
+                <p> </p>
+                <p><strong>欢迎使用管理系统！</strong></p>
+                <p> </p>
+            </div>
+        </div>
+        <div id="c0" class="content">
+            <div id="message">
+                <div class="message_top">
+                  <!-- <img src="images/backstage/u35.png"> -->
+                  <h4>数据报表展示</h4>
+                  <button class="bt10">刷新</button>
+                </div>
+                <div class="contentArea"></div>
+            </div>
+            <div id="announcement">
+                <div class="announcement_top">
+                  <!-- <img src="images/backstage/u35.png"> -->
+                  <h4>公 告</h4>
+                  <button class="bt10">刷新</button>
+                </div>
+            </div>
+        </div>
+        <!-- 订单管理 -->
+        <div id="c1" class="content">
+          <div>
+            <div style="margin-bottom:10px;overflow:hidden">
+                <div class="col-lg-6">
+                    <select name="select" id="select_k1" class="xla_k" style="width: 200px;height:34px;padding:'6px 12px';border-radius:5px">
+                        <option value="">全部订单</option>
+                        <option value="1">已处理订单</option>
+                        <option value="2">未处理订单</option>
+                    </select>  
+                </div>
+                <div class="col-lg-4 col-md-offset-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="indent" placeholder="按商品编号查询">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="search()">查询</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <table data-toggle="table">
+            <thead>
+                <tr>
+                <th>用户名</th>
+                <th>商品名称</th>
+                <th>商品编号</th>
+                <th>联系电话</th>
+                <th>地址</th>
+                <th>备注</th>
+                <th>订单状态</th>
+                <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="book">
+                
+            </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination" id="indentPages">
+                    
+                    
+                </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- 用户管理 -->
+        <div id="c2" class="content">
+            <div>
+            <div style="margin-bottom:10px;overflow:hidden">
+                <div class="col-lg-6">
+                    <select name="userControlRank" id="select_k1" class="xla_k" style="width: 200px;height:34px;padding:'6px 12px';border-radius:5px">
+                        <option value="">排序</option>
+                        <option value="userId">按用户编号排序</option>
+                        <option value="sex">按性别排序</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-offset-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="userFuzzy" placeholder="请输入用户名">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="userManagement()">查询</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <table data-toggle="table">
+            <thead>
+                <tr> 
+                <th>用户编号</th>
+                <th>用户名</th>
+                <th>昵称</th>
+                <th>性别</th>
+                <th>联系电话</th>
+                <th>邮箱</th>
+                <th>默认地址</th>
+                </tr>
+            </thead>
+            <tbody id="tab" class="userControlInfo">
+                
+            </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination" id="userPages">
+                    
+                </ul>
+            </nav>
+            <!-- <div style="text-align: center; padding-top: 10px; ">
+             </div> -->
+            </div>
+        </div>
+        <!-- 库存管理 -->
+        <div id="c3" class="content">
+            <div>
+                <div style="margin-bottom:10px;overflow:hidden">
+                    <div class="col-lg-3">
+                        <select name="stockRank" id="select_k11" class="xla_k" style="width: 200px;height:34px;padding:'6px 12px';border-radius:5px">
+                            <option value="">分类排序</option>
+                            <option value="ci_id">按商品编号</option>
+                            <option value="int_time">按入库时间</option>
+                            <option value="st_number">按库存量</option>
+                            <option value="ci_price">按商品单价</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-md-offset-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="fuzzySearch" placeholder="根据商品名称查询">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" onclick="stockPro()">查询</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="input-group"> 
+                            <span class="input-group">
+                                <a class="btn btn-primary btn-large theme-login" href="javascript:;" data-toggle="modal" data-target="#addModal">添加</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 库存模态框（Modal /添加使用） -->
+                <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    添加库存
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="goodsName" class="col-md-3 col-md-offset-1">商品名称：</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="goodsName" placeholder="请输入商品名称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-md-offset-1">入库时间：</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="insertTime" name="insertTime" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stockAmount" class="col-md-3 col-md-offset-1">库存数量：</label>
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control" min="0" id="stockAmount" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="goodsPrice" class="col-md-3 col-md-offset-1">商品单价：</label>
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control" min="0" id="goodsPrice" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="goodsName" class="col-md-3 col-md-offset-1">商品图片：</label>
+                                        <div class="col-md-4">
+                                            <input type="file" id="goodsImg" placeholder="请选择图片地址">
+                                        </div>
+                                        <!-- <div class="col-md-2">
+                                            <button type="button" class="btn btn-default">选择</button>
+                                        </div> -->
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="addStock()">添加</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 库存模态框（Modal /修改使用） -->
+                <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    
+                </div>
+                <table data-toggle="table">
+                        <thead>
+                            <tr>
+                                <th>商品编号</th>
+                                <th>商品名称</th>
+                                <th>入库日期</th>
+                                <th>库存数量</th>
+                                <th>商品单价</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tab1" id="stockControl">
+                            
+                        </tbody>
+                </table>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination" id="stockPages">
+                        
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+
+<!-- 联系我们 -->
+        <div id="c4" class="content">
+          <div>
+            <div style="margin-bottom:10px;overflow:hidden">
+                <div class="col-lg-4 col-md-offset-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="relation" placeholder="根据联系人查找">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="touch()">查询</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <table data-toggle="table">
+            <thead>
+                <tr>
+                <th>联系人</th>
+                <th>联系电话</th>
+                <th>留言</th>
+                <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="we"></tbody>
+          </table>
+          <nav aria-label="Page navigation">
+            <ul class="pagination" id="linkPages">
+                
+            </ul>
+          </nav>
+            
+        </div>
+    <!-- 预约 -->
+        <div id="c5" class="content"> 
+          <div>
+            <div style="margin-bottom:10px;overflow:hidden">
+                <div class="col-lg-4 col-md-offset-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="order" placeholder="根据姓名查找">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="subscribe(undefined)">查询</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <table data-toggle="table">
+            <thead>
+                <tr> 
+                <th>姓名</th>
+                <th>手机号码</th>
+                <th>预约人数</th>
+                <th>预约时间</th>
+                <th>备注</th>
+                <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="parcel"></tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination" id="subscribePages">
+                
+                </ul>
+            </nav>  
+        </div>
+        </div>
+        <div id="c6" class="content"></div>
+        </div>
+        </div>
+    </div>
+        <div id="footer"></div>
+        <!-- <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"> -->
+        </div>
+        <script src="./javascripts/myAjax.js"></script>
+        <script src="./javascripts/echarts.js"></script>
+</body>
+</html>

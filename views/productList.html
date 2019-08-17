@@ -1,0 +1,65 @@
+<html>
+    <link rel="stylesheet" href="stylesheets/productList.css">
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="../layer/skin/layer.css"/>
+    <script src="./javascripts/bootstrap.js"></script>
+    <script src="./layer/layer.js"></script>
+<body>
+    <%-include("./header.html")%>
+    <div class="list_header">
+    </div>
+    <div class="container">
+        <nav>
+            <div class="all_category">&nbsp;&nbsp;<i class="fa fa-reorder"></i>&nbsp;&nbsp;所有商品分类</div>
+            <ul id="list_main">
+                <li class="onChecked" value="undefined">全部</li>
+                <li value="男装" id="man">对象</li>
+                <li value="女装" id="winam">枝数</li>
+            </ul>
+        </nav>
+        <div class="list_classify">
+            <div class="list_classify_head">
+                <!-- <div class="list_goods_category"> -->
+                <div class="list_loading">
+                    <div class="list_maina1" id="list_mainal">
+                        <button>undefined</button>
+                        <button>undefined</button>
+                        <button>undefined</button>
+                        <button>undefined</button>
+                        <button>undefined</button> 
+                        <button>undefined</button> 
+                    </div>
+                </div>
+            </div>
+            <div class="list_content">
+                <aside>
+                    <div class="title">热门推荐</div>
+                    <ul id="hotProduct">
+                
+                    </ul>
+                </aside>     
+                <div class="list_bottom">
+                    <div class="list_interior" id="list_interior">
+                        
+                    </div>
+                    <div class="page_area">
+                        <div class="list_paging" id="list_paging">
+                            <button id="prev">《</button>
+                            <div id="pageCounts"></div>
+                            <button id="next">》</button>    
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="javascripts/myAjax.js"></script>
+    <script src="javascripts/productList.js"></script>
+    <script>
+        
+                 
+    </script>
+    <%-include("../public/footer.html")%>

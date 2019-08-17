@@ -1,0 +1,488 @@
+<link rel="stylesheet" href="stylesheets/personal.css">
+<!-- <link rel="stylesheet" href="stylesheets/bootstrap.min.css"> -->
+
+<%-include("./header.html")%>
+    <!--头部-->
+    <div class="content">
+        <div class="content-title">
+            <div class="con4">
+                <canvas id="cvs" width="200" height="200"></canvas> 
+                <span class="btn upload">上传头像
+                    <input type="file" class="upload_pic" id="upload" />
+                </span>
+                <span class="btn upload">确定</span>
+            </div>
+        </div>
+        <div class="content-main">
+            <div class="mt-menu-tree">
+                <ul>
+                    <li>个人信息</li>
+                    <li>我的订单</li>
+                    <li>消息</li>
+                    <li>收货地址</li>
+                    <li>安全设置</li>
+                </ul>
+            </div>
+            <div class="person-message">
+                <!--个人信息-->
+                <div class="personal-details tab on">
+                    <div class="personage">
+                        <div id="yidong">
+                            <form class="details">
+                                <span>昵称：</span>
+                                <input class="user" type="text">
+                                <br>
+                                <span>性别：</span>
+                                <input class="details-name" type="text">
+                                <br>
+                                <span>电话：</span>
+                                <input class="details-name" type="text">
+                                <br>
+                                <span>电子邮件：</span>
+                                <input class="details-name" type="text">
+                                <br>
+                                <button type="button" class="submit" onclick="submitting()">提交</button>
+                            </form>
+                            <div id="refera">
+                                <span>昵称：
+                                    <%-sendData[0].u_nickName%>
+                                </span>
+                                <br>
+                                <span>性别：
+                                    <%-sendData[0].u_sex%>
+                                </span>
+                                <br>
+                                <span>电话：
+                                    <%-sendData[0].u_phone%>
+                                </span>
+                                <br>
+                                <span>电子邮件：
+                                    <%-sendData[0].u_email%>
+                                </span>
+                                <br>
+                                <button type="button" onclick="referaa()">修改个人信息</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--我的订单-->
+                <div class="my-order tab">
+                    <div id="member-order-list">
+                        <h2 class="module-title">我的订单</h2>
+                        <div class="module-item">
+                            <ul class="statistic-tags">
+                                <li class="on">
+                                    <a href="">全部</a>
+                                </li>
+                                <li>
+                                    <a href="">待付款</a>
+                                </li>
+                                <li>
+                                    <a href="">待收货</a>
+                                </li>
+                                <li>
+                                    <a href="">已完成</a>
+                                </li>
+                                <li>
+                                    <a href="">已关闭</a>
+                                </li>
+                            </ul>
+                            <div class="list-caption">
+                                <div class="col col0">商品</div>
+                                <div class="col col1">数量</div>
+                                <div class="col col2">价格</div>
+                                <div class="col col3">状态</div>
+                                <div class="col col4">操作</div>
+                            </div>
+                            <div class="order-table">
+                                <ul>
+                                    <li class="order-number">
+                                        订单号:
+                                        <a href="">17082565130135429447</a>
+                                    </li>
+                                    <li class="order-time">
+                                        成交时间: 2017-08-25 18:05:30
+                                    </li>
+                                </ul>
+                                <div class="table-main">
+                                    <span>
+                                        <img src="<%-sendData[0].u_imgTwo%>" alt="">
+                                    </span>
+                                    <ul>
+                                        <li class="prod-name">
+                                            <a href="">
+                                                <%-sendData[0].u_goodsName%>
+                                            </a>
+                                        </li>
+                                        <li class="count">
+                                            <span>
+                                                <%-sendData[0].u_count%>
+                                            </span>
+                                        </li>
+                                        <li class="price">
+                                            <span>
+                                                <%-sendData[0].u_price%>
+                                            </span>
+                                        </li>
+                                        <li class="state">
+                                            <span>
+                                                <%-sendData[0].u_state%>
+                                            </span>
+                                        </li>
+                                        <li class="operation">
+                                            <span>
+                                                <a href="">查看订单</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="operation-line">
+                                    <div class="line-number">
+                                        总计:
+                                        <span class="red">
+                                            <dfn>￥</dfn> 300000.00</span>
+                                        (含运费：
+                                        <dfn>￥</dfn>
+                                        0.00 优惠：
+                                        <dfn>￥</dfn> 0.00 ）
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--消息-->
+                <div class="news tab">
+                    <ul class="news-logo-area">
+                        <li>
+                            <p>
+                                <span class="fa fa-truck"></span>
+                                <br>交易物流</p>
+                        </li>
+                        <li>
+                            <p>
+                                <span class="fa fa-volume-up"></span>
+                                <br>通知</p>
+                        </li>
+                        <li>
+                            <p>
+                                <span class="fa fa-commenting-o"></span>
+                                <br>互动</p>
+                        </li>
+                    </ul>
+                    <div class="news-content">
+                        <h2>
+                            <span class="fa fa-frown-o"></span>&nbsp;&nbsp;&nbsp;抱歉，您没有物流信息哦~</h2>
+                    </div>
+                    <div class="news-content">
+                        <h3>服务消息</h3>
+                        <div class="goods-message">
+                            <p>淘宝物流：您购买的商品有新的信息</p>
+                            <div class="goods-img">
+                                <img src="">
+                            </div>
+                            <div class="goods-intro">
+                                <p>
+                                    <span>订单号：
+                                        <em>5130291008</em>
+                                        <br>快递已签收</span>
+                                    <br>
+                                    <em>一星期前</em>
+                                </p>
+                            </div>
+                            <div class="close-goods-message">X</div>
+                        </div>
+                        <div class="goods-message">
+                            <p>淘宝物流：您购买的商品有新的信息</p>
+                            <div class="goods-img">
+                                <img src="">
+                            </div>
+                            <div class="goods-intro">
+                                <p>
+                                    <span>订单号：
+                                        <em>5130291008</em>
+                                        <br>快递已签收</span>
+                                    <br>
+                                    <em>一星期前</em>
+                                </p>
+                            </div>
+                            <div class="close-goods-message">X</div>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-detail-content">
+                            <p>
+                                <span class="fa fa-envelope"></span>&nbsp;&nbsp;&nbsp;&nbsp;您有0条私信~</p>
+                        </div>
+                    </div>
+                </div>
+                <!--收货地址-->
+                <div class="shipping-address tab">
+                    <h2 class="module-title">收货地址</h2>
+                    <div class="address-info">
+                        <ul class="adress-list">
+                            <li class="address-item">
+                                <div class="inner">
+                                    <div class="item-top">
+                                        <span name="">收货人：
+                                            <%-sendData[0].u_consignee%>
+                                        </span><br>
+                                        <span name="">手机号码：
+                                            <%-sendData[0].u_cellPhone%>
+                                        </span>
+                                    </div>
+                                    <div class="cl">
+                                        <p class="mlellipsis">
+                                            <span>省：
+                                                <%-sendData[0].u_province%>
+                                            </span><br>
+                                            <span>市：
+                                                <%-sendData[0].u_city%>
+                                            </span><br>
+                                            <span>区/县以及详细地址：
+                                                <%-sendData[0].u_detAdd%>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <ul class="operations">
+                                    <li class="operations-address-edit" onclick="payBtn()">编辑</li>
+                                    <li class="operations-address-del">删除</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--安全设置-->
+                <div class="tab">
+                    <h2 class="module-title">安全设置</h2>
+                    <ul class="security-settings">
+                        <li class="info-title">安全服务</li>
+                        <li>
+                            <div class="zhx-anquan-page">
+                                <div class="zhx-anquan-area">
+                                    <div class="zhx-anquan">
+                                        安全等级:
+                                        <span class="zhx-anquan-level-high">高</span>
+                                    </div>
+                                    <div class="zhx-anquan-poptip">
+                                        <div class="ui-poptip">
+                                            <div class="zhx-bill">
+                                                <a href="">点击查看账号安全</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-ctn">
+                                <img src="./images/Personal/Icon.png" alt="">
+                            </div>
+                            <div class="item-info">
+                                <h2>账号密码</h2>
+                                <div class="desc">用户保护帐号信息和登录安全</div>
+                            </div>
+                            <div class="btn-ctn">
+                                <input type="button" value="修改">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-ctn">
+                                <img src="images/Personal/issue.png" alt="">
+                            </div>
+                            <div class="item-info">
+                                <h2>密保问题</h2>
+                                <div class="desc">密保问题可用于我家果子登录账号，找回密码等</div>
+                            </div>
+                            <div class="btn-ctn">
+                                <input type="button" value="修改">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-ctn">
+                                <img src="images/Personal/cellphone.png" alt="">
+                            </div>
+                            <div class="item-info">
+                                <h2>手机号码</h2>
+                                <div class="desc">密保问题可用于我家果子登录账号，找回密码等</div>
+                            </div>
+                            <div class="btn-ctn">
+                                <input type="button" value="修改">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--隐藏-->
+    <div class="panelwrap" style="display: none">
+        <div class="mask"></div>
+        <div class="panel dialog-container">
+            <a href="javascript:void(0)" class="icon-close" onclick="payBtn()">
+                <i class="code-close">X</i>
+            </a>
+            <div class="dialog-title">修改收货地址</div>
+            <form id="shipping-address-new-edit">
+                <div class="address-info-new">
+                    <ul>
+                        <li>
+                            <span>* 收货人:</span>
+                            <div>
+                                <input type="text">
+                            </div>
+                        </li>
+                        <li>
+                            <span>* 手机号码:</span>
+                            <div>
+                                <input type="text">
+                            </div>
+                        </li>
+                        <li>
+                            <span>* 收货地址:</span>
+                            <div>
+                                <div class="j_ReginContriner">
+                                    <!-- <select name="" id="first">
+                                        <option>请选择</option>
+                                        <option>四川</option>
+                                        <option>广州</option>
+                                        <option>上海</option>
+                                        <option>北京</option>
+                                        <option>深圳</option>
+                                        <option>西藏</option>
+                                    </select>
+                                    <select name="" id="first">
+                                        <option>请选择</option>
+                                        <option>四川</option>
+                                        <option>广州</option>
+                                        <option>上海</option>
+                                        <option>北京</option>
+                                        <option>深圳</option>
+                                        <option>西藏</option>
+                                    </select>
+                                    <select name="" id="first">
+                                        <option>请选择</option>
+                                        <option>四川</option>
+                                        <option>广州</option>
+                                        <option>上海</option>
+                                        <option>北京</option>
+                                        <option>深圳</option>
+                                        <option>西藏</option>
+                                    </select> -->
+                                    <select name="sheng" id="to_cn" onchange="set_city(this, document.getElementById('city')); WYL();" class="first">
+
+                                        <option value="请选择">请选择</option>
+
+                                        <option value="台湾">台湾</option>
+
+                                        <option value="马来西亚">马来西亚</option>
+
+                                        <option value="北京">北京</option>
+
+                                        <option value="上海">上海</option>
+
+                                        <option value="天津">天津</option>
+
+                                        <option value="重庆">重庆</option>
+
+                                        <option value="河北省">河北省</option>
+
+                                        <option value="山西省">山西省</option>
+
+                                        <option value="辽宁省">辽宁省</option>
+
+                                        <option value="吉林省">吉林省</option>
+
+                                        <option value="黑龙江省">黑龙江省</option>
+
+                                        <option value="江苏省">江苏省</option>
+
+                                        <option value="浙江省">浙江省</option>
+
+                                        <option value="安徽省">安徽省</option>
+
+                                        <option value="福建省">福建省</option>
+
+                                        <option value="江西省">江西省</option>
+
+                                        <option value="山东省">山东省</option>
+
+                                        <option value="河南省">河南省</option>
+
+                                        <option value="湖北省">湖北省</option>
+
+                                        <option value="湖南省">湖南省</option>
+
+                                        <option value="广东省">广东省</option>
+
+                                        <option value="海南省">海南省</option>
+
+                                        <option value="四川省">四川省</option>
+
+                                        <option value="贵州省">贵州省</option>
+
+                                        <option value="云南省">云南省</option>
+
+                                        <option value="陕西省">陕西省</option>
+
+                                        <option value="甘肃省">甘肃省</option>
+
+                                        <option value="青海省">青海省</option>
+
+                                        <option value="内蒙古">内蒙古</option>
+
+                                        <option value="广西">广西</option>
+
+                                        <option value="西藏">西藏</option>
+
+                                        <option value="宁夏">宁夏</option>
+
+                                        <option value="新疆">新疆</option>
+
+                                        <option value="香港">香港</option>
+
+                                        <option value="澳门">澳门</option>
+                                    </select> - 市
+                                    <select id="city" class="first" name="shi">
+
+                                        <option value="请选择">请选择</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>* 详细地址:</span>
+                            <div>
+                                <input type="text">
+                            </div>
+                        </li>
+                        <li>
+                            <span></span>
+                            <div>
+                                <div class="j_ReginContriner">
+                                    <input name="isDefault" type="checkbox" id="i-da-chkbox" value="南京路">设为默认地址
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="area-pane-btns">
+                                <button type="button" class="btn--md" id="saveAddress" onclick="save()">
+                                    <i class="btn-inner">保存</i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+    <%-include("../public/footer.html")%>
+        <script src="javascripts/myAjax.js"></script>
+        <script src="javascripts/personal.js"></script>
+        <script src="javascripts/jquery.js"></script>
+        <script src="javascripts/bootstrap.js"></script>        
