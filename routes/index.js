@@ -21,9 +21,9 @@ var https = require('https');
 var qs = require('querystring');
 var authCodec='';
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 // 手机号验证
 router.post('/verify', function(req, res) {
@@ -150,15 +150,26 @@ router.post("/login.do",function(req,res){
 });
 
 //拦截首页
-router.get('/myE&Q.html',function(req,resp){
+router.get('/index.html',function(req,resp){
   var sql = "select ci_id,img_src1,ci_price,details,ci_name from goods_info limit 6";
   var s_sql = "select ci_id,img_src1,ci_price,old_price,ci_name from goods_info where cl_id=11"
   ql.dbConn.sqlConnect(sql,[],function(err,data){
       ql.dbConn.sqlConnect(s_sql,[],function(err,s_data){
           console.log('特价商品',s_data);
-        resp.render('myE&Q.html',{data:data,s_data:s_data});
+        resp.render('index.html',{data:data,s_data:s_data});
       })
   })
+})
+//拦截首页
+router.get('/',function(req,resp){
+    var sql = "select ci_id,img_src1,ci_price,details,ci_name from goods_info limit 6";
+    var s_sql = "select ci_id,img_src1,ci_price,old_price,ci_name from goods_info where cl_id=11"
+    ql.dbConn.sqlConnect(sql,[],function(err,data){
+        ql.dbConn.sqlConnect(s_sql,[],function(err,s_data){
+            console.log('特价商品',s_data);
+          resp.render('index.html',{data:data,s_data:s_data});
+        })
+    })
 })
 //拦截详情页
 router.get("/productDetail.html",productDetailRoutes.productDetail);

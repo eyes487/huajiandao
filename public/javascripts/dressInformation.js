@@ -3,7 +3,7 @@ var prev=0,next=0;
 var sliderLeft;
 var sliderRight
 function slider(){
-    if(next==5){
+    if(next==2){
         next=0;
     }else{
         next++;

@@ -4,7 +4,7 @@
 * 项目实现包括网站展示页面，和后台管理系统
 
 
-# <a href="http://118.89.39.22:8888/myE&Q.html">在线访问地址</a>
+# <a href="http://fl.eyes487.top:8888">在线访问地址</a>
 网站页面访问可使用（账号：17808323471，密码：111111）后台管理系统登录（账号：admin，密码：admin）
 （注册功能估计不行了，免费短信已经被用完了ಡωಡ)hiahiahia）
 
@@ -33,7 +33,7 @@ npm install
 ```
 npm start
 
-在浏览器中输入http://localhost:8888/myE&Q.html
+在浏览器中输入http://localhost:8888
 
 ```
 

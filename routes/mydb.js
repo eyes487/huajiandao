@@ -1,8 +1,7 @@
 var mysql = require('mysql');
 var dbConn={
     configure:{
-        // host:"118.89.39.22",//主机地址
-        host: "localhost",
+        host:"localhost",//主机地址
         port:"3306",//主机端口
         user:"root",//用户名
         password:"123456",//主机密码

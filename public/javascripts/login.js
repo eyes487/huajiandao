@@ -65,7 +65,7 @@ lrBtn.onclick =  function(){
                     location.href = 'backstage.html';
                 }else if(response==1){
                     window.sessionStorage.setItem('Key',userName);
-                    location.href="myE&Q.html"; 
+                    location.href="index.html"; 
                 }else{
                     hint[0].innerText="用户名或密码错误";
                     document.forms[0].elements[1].value ='';

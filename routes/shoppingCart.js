@@ -5,11 +5,11 @@ const ql = require("./mydb");
 var shoppingCart = function(req,resp){
     var userName = req.body.userName;
     var productId = req.body.productId;
+    var size = req.body.size;
     var number=req.body.value;
     // console.log(userName,fruitId,quantity)
-    var sql = 'insert into shoppingcart (p_id,sc_quantity,u_name)values (?,?,?)'
-    ql.dbConn.sqlConnect(sql,[productId,number,userName],function(err,data){
-        console.log(productId,number,userName)
+    var sql = 'insert into shoppingcart (p_id,sc_quantity,u_name,sc_size)values (?,?,?,?)'
+    ql.dbConn.sqlConnect(sql,[productId,number,userName,size],function(err,data){
         if(data!='undifined'){
             resp.send('1');
         }else{

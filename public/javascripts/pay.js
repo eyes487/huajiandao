@@ -58,7 +58,7 @@ function atoncePay(){
                 layer.msg("支付失败",{icon:2});
             }else if(xhr.responseText==0){
                 layer.msg("支付成功",{icon:1});
-                setTimeout(function(){location.href="myE&Q.html";},2000);
+                setTimeout(function(){location.href="index.html";},2000);
             }
         }
     }

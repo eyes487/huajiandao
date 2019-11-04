@@ -39,19 +39,32 @@ var blindArray = [
     ['./images/myE&QImg/index-banner1.jpg', '小行星', 'javascript:;'],
     ['./images/myE&QImg/index-banner2.jpg', '红枫叶', 'javascript:;'],
     ['./images/myE&QImg/index-banner3.jpg', '璀璨星空', 'javascript:;'],
-    ['./images/myE&QImg/index-banner4.jpg', '回家', 'javascript:;'],
-    ['./images/myE&QImg/index-banner5.jpg', '浪漫', 'javascript:;'],
 ];
-var blindBox = new blind ({
-    arr: blindArray,
-    autoPlay: true,
-    animationTime: 5000, 
-    bladeNum: 10,
-    callback: function(num) {
-        // console.log(num);
-    }
-});
-
+var blindBox ;
+let bannerTimer = setTimeout(function(){
+    clearTimeout(bannerTimer);
+    let oFragmeng = document.createDocumentFragment(); 
+    let html = `<div id="blindSwiper">
+                <a class="blind-url" href=""></a>
+                <div class="blind-pic"></div>
+                <div id="blind-control">
+                    <div class="blindpn" id="blindPrev"><span></span></div>
+                    <div class="dots-box"></div>
+                    <div class="blindpn" id="blindNext"><span></span></div>
+                </div>
+            </div>`;
+        // oFragmeng.appendChild(html);
+        banner.innerHTML = html;
+        blindBox = new blind ({
+            arr: blindArray,
+            autoPlay: true,
+            animationTime: 5000, 
+            bladeNum: 10,
+            callback: function(num) {
+                // console.log(num);
+            }
+        });
+},5000)
 //添加购物车
 function addCart(id){
     var userName = sessionStorage.getItem('Key');
