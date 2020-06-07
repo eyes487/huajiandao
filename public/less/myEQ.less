@@ -47,18 +47,64 @@
     margin: 0 auto;
     position: relative;
 }
-
-
+[data-webp="0"] {
+    section{
+        .banner{
+            // background: url(../images/myE&QImg/index-banner2.jpg);
+        }
+        .enter{
+            header{
+                background:url(../images/myE&QImg/more_activity.jpg);
+            }
+        }
+    }
+    .shopping-enter {
+        background: url(../images/myE&QImg/rose_area.jpg);
+    }
+    .order-enter {
+        background: url(../images/myE&QImg/order_area.jpg);
+    }
+    .making-enter {
+        background: url(../images/myE&QImg/message_area.jpg);
+    }
+    
+}
+[data-webp="1"] {
+    section{
+        .banner{
+            background: url(../images/myE&QImg/index-banner2.webp);
+        }
+        .enter{
+            header{
+                background:url(../images/myE&QImg/more_activity.webp);
+            }
+        }
+    }
+    .shopping-enter {
+        background: url(../images/myE&QImg/rose_area.webp);
+    }
+    .order-enter {
+        background: url(../images/myE&QImg/order_area.webp);
+    }
+    .making-enter {
+        background: url(../images/myE&QImg/message_area.webp);
+    }
+}
+.picture img{
+    width: 240px;
+    height: 240px;
+}
 
 //头部副本-e
 section{
     width: 100%;
     .banner{
-        width: 100%;
+        width: 1206px;
         height: 436px;
+        margin: 0 auto;
         position: relative;
-        background: url(../images/myE&QImg/blur-bg.jpg);
-        background-size:cover;
+        background-size: cover;
+        background-position: center center;
         .mask{
             width: 100%;
             height: 100%;
@@ -201,6 +247,8 @@ section{
                     line-height:40px;
                 }
                 .discountLogo{
+                    width: 19px;
+                    height: 23px;
                     position: absolute;
                     top:-20px;
                     right: -10px;
@@ -218,9 +266,12 @@ section{
                 height: 300px;
                 cursor: pointer;
                 overflow: hidden;
-                img{
-                    width:100%;
-                } 
+                .specialFlower{
+                    img{
+                        width: 250px;
+                        height: 250px;
+                    }
+                }
                 p{
                     color:#C00;
                     font-size: 19px;
@@ -236,9 +287,8 @@ section{
                         display: block;
                         position: absolute;
                         right: 0;
-                        top:20px;
+                        top:6px;
                     }
-                    
                 }
             }
         } 
@@ -261,9 +311,9 @@ section{
         flex-direction: column;
         justify-content: space-around;
         header{
-            width: 100%;
+            width: 1206px;
             height: 117px;
-            background:url(../images/myE&QImg/more_activity.jpg);
+            margin: 0 auto;
             background-position:top center;
             background-repeat:no-repeat;
         }
@@ -325,16 +375,7 @@ section{
                 opacity: 1;
                 .change;
             }
-        }
-        .shopping-enter{
-            background: url(../images/myE&QImg/rose_area.jpg);
-        }
-        .order-enter{
-            background: url(../images/myE&QImg/order_area.jpg);
-        }
-        .making-enter{
-            background: url(../images/myE&QImg/message_area.jpg);
-        }
+        }     
     }
     #move-top{
         width: 32px;
@@ -348,6 +389,7 @@ section{
         bottom: 100px;
         right: 20px;
         display: none;
+        z-index: 1000;
     }
     
 }

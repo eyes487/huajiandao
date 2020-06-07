@@ -1,37 +1,33 @@
-
-        <link rel="stylesheet" href="stylesheets/myEQ.css">
-        <link rel="stylesheet" href="css/index.css"> 
-        <link rel="stylesheet" href="../layer/skin/layer.css"/>
-        <script src="../javascripts/jquery.js"></script>
-    <script src="../layer/layer.js"></script>
         <%-include("./header.html")%>
-    
+        <link rel="stylesheet" href="stylesheets/myEQ.css">
+        <link rel="stylesheet" href="stylesheets/index.css"> 
+        <link rel="stylesheet" href="../layer/skin/layer.css"/>
+        
+        <script src="../javascripts/jquery.min.js" defer></script>
+        
     <section>
         <div class="banner">
-            <!-- <div class="mask"></div>
-            <p></p>
-            <h2>Welcome to Flower Life</h2> -->
-            <!-- <div id="blindSwiper">
-                <a class="blind-url" href=""></a>
-                <div class="blind-pic"></div>
-                <div id="blind-control">
-                    <div class="blindpn" id="blindPrev"><span></span></div>
-                    <div class="dots-box"></div>
-                    <div class="blindpn" id="blindNext"><span></span></div>
-                </div>
-            </div> -->
+            <picture>
+                <source type="image/webp" srcset="../images/myE&QImg/index-banner2.webp" >
+                <img src="../images/myE&QImg/index-banner2.jpg" alt="">
+            </picture>
         </div>
         <div class="new-trends">
             <header>
                 <div class="container">
-                    <h3>&nbsp;&nbsp;<i class="fa fa-reorder"></i>&nbsp;&nbsp;本月主推</h3>
+                    <h3>&nbsp;&nbsp;<i class="fa fa-menu"></i>&nbsp;&nbsp;本月主推</h3>
                 </div>
             </header>
             <div class="container">
                 <aside>
                     <% data.forEach(function(data){%>
                         <div class="threeItems">
-                            <a href="productDetail.html?id=<%-data.ci_id%>"><img src=<%-data.img_src1%> alt=""></a>
+                            <a href="productDetail.html?id=<%-data.ci_id%>">
+                                <picture>
+                                    <source type="image/webp" srcset=<%-data.img_src1.split('.')[0]+'.webp'%> >
+                                    <img src=<%-data.img_src1%> alt="">
+                                </picture>
+                            </a>
                             <div class="cartMask">
                                 <p><%-data.ci_name%>&nbsp;&nbsp;&nbsp;&nbsp;<span class="price">￥<%-data.ci_price%>.00</span> <br><span><%-data.details%></span></p>
                                 <h3><a onclick="addCart(<%-data.ci_id%>)"><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;&nbsp;加入购物车</a></h3>
@@ -39,7 +35,10 @@
                         </div>
                     <%})%>
                 </aside>
-                <img class="threeTRoses" src="images/myE&QImg/news1.jpg" alt=""> 
+                <picture class="threeTRoses">
+                    <source type="image/webp" srcset="images/myE&QImg/news1.webp">
+                    <img src="images/myE&QImg/news1.jpg" alt="">
+                </picture>
             </div>
         </div>
         <div class="specialOffier"> 
@@ -50,14 +49,7 @@
                 </header>
                 <div class="container">
                     <div class="new-items">
-                        <% s_data.forEach(function(data){%>
-                        <div class="item">
-                            <a href="productDetail.html?id=<%-data.ci_id%>">
-                                <img src=<%-data.img_src1%> alt="">
-                            </a>
-                            <p>￥<%-data.ci_price%>.00&nbsp;&nbsp;<s class="oldPrice">￥<%-data.old_price%>.00</s><a onclick="addCart(<%-data.ci_id%>)"><img src="images/btn_addtocart.jpg"></a></p>
-                        </div>
-                        <%})%>
+                        
                     </div>
                 </div>   
         </div>
@@ -77,9 +69,11 @@
         </div>
         <div id="move-top"></div>
     </section>
-    <!-- <script src="javascripts/jquery.js"></script> -->
-    <script src="javascripts/myAjax.js"></script>
-    <script src="javascripts/blind.js"></script>
-    <script src="javascripts/myE&Q.js"></script>
+    <!-- <script src="javascripts/jquery.min.js"></script> -->
+    <script src="javascripts/myAjax.js" defer></script>
+    <script src="javascripts/blind.js" defer></script>
+    <script src="javascripts/myE&Q.js" defer></script>
+    <script src="../layer/layer.js" defer></script>
+    
     
     <%-include("../public/footer.html")%>

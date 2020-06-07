@@ -1,5 +1,6 @@
 const express = require('express');
 const ql = require("./mydb");
+var {success, fail} = require('./util')
 
 //添加购物车 插入数据
 var shoppingCart = function(req,resp){
@@ -11,9 +12,9 @@ var shoppingCart = function(req,resp){
     var sql = 'insert into shoppingcart (p_id,sc_quantity,u_name,sc_size)values (?,?,?,?)'
     ql.dbConn.sqlConnect(sql,[productId,number,userName,size],function(err,data){
         if(data!='undifined'){
-            resp.send('1');
+            resp.send(success());
         }else{
-            resp.send('0');
+            resp.send(fail());
         }
     });
 }
@@ -35,10 +36,9 @@ var deleteCart = function(req,resp){
     var sql = 'delete from shoppingCart where sc_id = ?';
     ql.dbConn.sqlConnect(sql,[id],function(err,data){
         if(data!=undefined){
-            resp.send('1');
+            resp.send(success());
         }else{
-            resp.send('0');
-            
+            resp.send(fail());
         }
     });
 }

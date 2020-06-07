@@ -5,7 +5,7 @@
     <title></title>
     <!-- <link rel="stylesheet" href="stylesheets/productDetails.css"> -->
     <!-- <script src="javascripts/productDetails.js"></script> -->
-    <link rel="stylesheet" href="stylesheets/font-awesome.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
     <link rel="stylesheet" href="stylesheets/header&footer.css">
     <title>花间道</title>
 </head>
@@ -13,7 +13,12 @@
     <div class="headerbox"></div>
     <div id="header">
         <div class="container">
-            <div class="logo"><img src="./images/myE&QImg/logo.jpg" alt=""></div>
+            <div class="logo">
+                <picture>
+                    <source type="image/webp" srcset="./images/myE&QImg/logo.webp">
+                    <img src="./images/myE&QImg/logo.jpg" alt="">
+                </picture>
+            </div>
             <ul class="item">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="productList.html">繁花似锦</a></li>
@@ -41,5 +46,5 @@
             </ul>
         </div>
     </div>
-    <script src="javascripts/header.js"></script>
+    <script src="javascripts/header.js" defer></script>
  

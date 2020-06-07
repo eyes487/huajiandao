@@ -7,8 +7,9 @@ var pageBtn = document.getElementById('pageCounts').getElementsByTagName('span')
 var prev = document.getElementById('prev');
 var next = document.getElementById('next');
 var pageCount = 1;
+var allPageCount;
 //查询总页数
-function queryAllPage(){
+function queryAllPage(sexClassValue,clothingClassValue){
     ajax({
         type:"post",
         url:"queryPage.do",
@@ -16,9 +17,7 @@ function queryAllPage(){
         dataType:"text",
         success:function(responseText){
             var data = JSON.parse(responseText);
-            // console.log(responseText)
             allPageCount = Math.ceil(data[0].allCount/6);
-            // console.log(allPageCount)
             pageCounts.innerHTML = '';  
             for(var i=1;i<=allPageCount;i++){
                 pageCounts.innerHTML +=`
@@ -46,7 +45,7 @@ function queryHotProduct(){
         data:{},
         dataType:"text",
         success:function(response){
-            let data = JSON.parse(response);
+            var data = JSON.parse(response);
             hotProduct.innerHTML = '';
             for(var i=0;i<6;i++){
                 hotProduct.innerHTML+=`
@@ -65,16 +64,15 @@ function queryHotProduct(){
 }
 //查询商品
 function queryProduct(){
-    sexClassValue = document.getElementsByClassName('onChecked')[0].innerHTML;//大的分类
-    console.log(sexClassValue);
-    clothingClassV = document.getElementsByClassName('onChecked1')[0];//细的分类
+    var sexClassValue = document.getElementsByClassName('onChecked')[0].innerHTML;//大的分类
+
+    var clothingClassV = document.getElementsByClassName('onChecked1')[0];//细的分类
     if(clothingClassV){
-        // console.log(clothingClassValue.innerHTML)
         clothingClassValue = clothingClassV.innerHTML;
     }else{
         clothingClassValue = 'undefined';
     }
-    queryAllPage();
+    queryAllPage(sexClassValue,clothingClassValue);
     ajax({
         type:"post",
         url:"productList.do",
@@ -93,9 +91,8 @@ function queryProduct(){
                         <a href="productDetail.html?id=${data[i].ci_id}">立即购买</a>
                     </button>
                 </div>
-                `  
+                `;
             }
-   
         }
     });
 }
@@ -184,8 +181,7 @@ for(var i =0 ;i<sexClass.length;i++){
                     //移除其他兄弟的类
                 }
                 //给点击的按钮添加类
-                clothingClass[this.index].setAttribute('class','onChecked1');            
-                // console.log(clothingClassValue);
+                clothingClass[this.index].setAttribute('class','onChecked1'); 
                 queryProduct();
                
             }

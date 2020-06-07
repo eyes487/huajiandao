@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./stylesheets/font-awesome.css">
-    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <link rel="stylesheet" href="./stylesheets/font-awesome.min.css">
+    <script type="text/javascript" src="javascripts/jquery.min.js"></script>
     <script src="./javascripts/bootstrap.js"></script>
     <script src="./layer/layer.js"></script>
     <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
@@ -16,7 +16,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="./images/login_bg.jpg" alt="">
+                <img src="./images/myE&QImg/logo.jpg" alt="">
             </div>
         </div>
     </header>
@@ -39,22 +39,23 @@
             <hr>
             <form class="form-horizontal">
                 <div class="input-group">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-phone"></i></span>
-                    <input type="text" class="form-control userName" onblur="checkName()" placeholder="请输入手机号" aria-describedby="basic-addon1">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control userName" onblur="checkName()" placeholder="请输入用户名" aria-describedby="basic-addon1">
                     <span class="hint"></span>
                 </div>
                 &nbsp;
                 <div class="input-group">
-                    <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-check-square"></i></span>
+                    <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-check"></i></span>
                     <input type="text" class="form-control code" placeholder="" aria-describedby="basic-addon2">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="code" onclick="countTime(this)">获取验证码</button>
+                        <!-- <button class="btn btn-default" type="button" id="code" onclick="countTime(this)">获取验证码</button> -->
+                        <div src="" alt="验证码" style="background: #fff;margin-left: 10px;" class="checkCode" id="code" onclick="createCode()"></div>
                     </span>
                     <span class="hint"></span>
                 </div>
                 &nbsp; 
                 <div class="input-group">
-                    <span class="input-group-addon" id="sizing-addon3"><i class="fa fa-envelope"></i></span>
+                    <span class="input-group-addon" id="sizing-addon3"><i class="fa fa-mail"></i></span>
                     <input type="email" class="form-control email" name="email" onblur="checkEmail()" placeholder="请输入邮箱" aria-describedby="basic-addon3">
                     <span class="hint"></span>
                 </div>
@@ -79,6 +80,7 @@
         </div>
     </div>
     <script src="./javascripts/myAjax.js"></script>
+    <script src="./lib/md5.js"></script>
     <script src="./javascripts/regist.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var ql = require("./mydb");
+var myEQ = require('./myEQ');
 var pro = require('./productList');
 var login = require('./login');
 var dateils=require('./productDetail');
@@ -20,78 +21,6 @@ var http = require('http');
 var https = require('https');
 var qs = require('querystring');
 var authCodec='';
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
-
-// 手机号验证
-router.post('/verify', function(req, res) {
-    var userName = req.body.userName;
-    var yanhengma="";//暂时使用的验证码容器
-    var Num="";
-    for(var i=0;i<6;i++){
-        Num+=Math.floor(Math.random()*10);
-    }
-    var apikey = 'c4cfc80658be4e859dd8279a04bc3dd2';
-    // 修改为您要发送的手机号码，多个号码用逗号隔开
-    var mobile = userName;
-    // 修改为您要发送的短信内容
-    var text = '【花间道】您的验证码是'+Num+'。如非本人操作，请忽略本短信';
-    // 指定发送的模板编号
-    var tpl_id = 1995898;
-    authCodec=Num;
-    console.log(authCodec);
-    // 查询账户信息https地址
-    var get_user_info_uri = 'https://sms.yunpian.com/v2/sms/single_send.json';
-    // 智能匹配模板发送https地址
-    var sms_host = 'sms.yunpian.com';
-    var voice_host = 'voice.yunpian.com';
-    send_sms_uri = 'https://sms.yunpian.com/v2/sms/single_send.json';
-    // 指定模板发送接口https地址
-    send_tpl_sms_uri = 'https://sms.yunpian.com/v2/sms/single_send.json';
-    // 发送语音验证码接口https地址
-    send_voice_uri = 'https://sms.yunpian.com/v2/sms/single_send.json';
-    send_sms(send_sms_uri,apikey,mobile,text);
-    function send_sms(uri,apikey,mobile,text){
-        console.log(uri)
-        console.log(apikey)
-        console.log(mobile)
-        console.log(text)
-        var post_data = {
-            'apikey': apikey,
-            'mobile':mobile,
-            'text':text,
-        };//这是需要提交的数据
-        var content = qs.stringify(post_data);
-        post(uri,content,sms_host);
-    }
-    console.log("aaa3")
-    function post(uri,content,host){
-        console.log("aaa2")
-        var options = {
-            hostname: host,
-            port: 443,
-            path: uri,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            }
-        };
-        var req = https.request(options, function (res) {
-            console.log('STATUS: ' + res.statusCode);
-            console.log('HEADERS: ' + JSON.stringify(res.headers));
-            res.setEncoding('utf8');
-            res.on('data', function (chunk) {
-                  console.log('BODY: ' + chunk);
-            });
-        });
-        console.log(content);
-        req.write(content);
-        // next();
-        req.end();
-    }
-});
 
 
 // 邮箱验证
@@ -133,7 +62,7 @@ router.post("/enroll",function(req,res){
     });
 });
 // 注册拦截
-router.post("/login.do",function(req,res){ 
+router.post("/register",function(req,res){ 
     let userName=req.body.userName;
     let Pwd = req.body.pwd;
     let email = req.body.email;
@@ -152,23 +81,17 @@ router.post("/login.do",function(req,res){
 //拦截首页
 router.get('/index.html',function(req,resp){
   var sql = "select ci_id,img_src1,ci_price,details,ci_name from goods_info limit 6";
-  var s_sql = "select ci_id,img_src1,ci_price,old_price,ci_name from goods_info where cl_id=11"
-  ql.dbConn.sqlConnect(sql,[],function(err,data){
-      ql.dbConn.sqlConnect(s_sql,[],function(err,s_data){
-          console.log('特价商品',s_data);
-        resp.render('index.html',{data:data,s_data:s_data});
-      })
-  })
+
+    ql.dbConn.sqlConnect(sql,[],function(err,data){
+        resp.render('index.html',{data:data});
+    })
 })
 //拦截首页
 router.get('/',function(req,resp){
     var sql = "select ci_id,img_src1,ci_price,details,ci_name from goods_info limit 6";
-    var s_sql = "select ci_id,img_src1,ci_price,old_price,ci_name from goods_info where cl_id=11"
+
     ql.dbConn.sqlConnect(sql,[],function(err,data){
-        ql.dbConn.sqlConnect(s_sql,[],function(err,s_data){
-            console.log('特价商品',s_data);
-          resp.render('index.html',{data:data,s_data:s_data});
-        })
+        resp.render('index.html',{data});
     })
 })
 //拦截详情页
@@ -212,10 +135,6 @@ router.get('/contactUs.html',function(res,resp){
 });
 router.post('/contactUs.do',contactUs.contactUs)//提交联系我们页面的留言
 
-//订单
-// router.get("/order.html",function(req,res){
-//     res.render("order");
-// })
 
 
 router.get('/shoppingCart.html',shoppingCart.showCart);//购物车
@@ -251,28 +170,28 @@ router.get("/tijiao",function(req,resp){//修改用户信息
     var phone = req.query.phone;
     var email = req.query.email;
     var user = req.query.user;
-    // console.log(user)
+
     sql = "update user set u_nickName = ?,u_sex = ?,u_phone = ?,u_email = ? where u_name = ?;";
     ql.dbConn.sqlConnect(sql, [nickName,sex,phone,email,user], function (err, data) {
         if (data!=undefined) {
-            // console.log(111111)
             resp.redirect("productList.html");
         }
     })
-    // console.log(sql)
 });
 
 router.get("/personal",function (req,resp) {
-    // console.log(2222)
     var a =req.query.file;
-    // console.log(a)
 })
 
 
 
+router.get('/captcha',login.captcha);//验证码
 router.post('/loginPost.do',login.loginPost);//全部
 router.post('/addCart',shoppingCart.shoppingCart);//添加购物车
 router.post('/deleteCart',shoppingCart.deleteCart);//删除购物车
+
+//查询特价商品
+router.get("/querySpecialProduct",myEQ.querySpecialProduct);
 //查询全部
 router.post("/productList.do",pro.queryAll);
 router.post("/hotProduct.do",pro.queryHotProduct);

@@ -10,17 +10,23 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.2.1",
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
     "nodemailer": "^4.2.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
     "browser-sync": "^2.18.13",
     "ejs": "^2.5.7",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
+    "gulp-imagemin": "^6.2.0",
     "gulp-less": "^3.3.2",
-    "gulp-minify-css": "^1.2.4"
+    "gulp-minify-css": "^1.2.4",
+    "gulp-tinypng-nokey": "^1.1.0",
+    "gulp-uglify": "^3.0.2"
   }
 }
