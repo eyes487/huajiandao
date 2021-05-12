@@ -14,7 +14,7 @@
     "md5": "^2.2.1",
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
-    "nodemailer": "^4.2.0",
+    "nodemailer": "^6.4.16",
     "serve-favicon": "~2.4.5",
     "svg-captcha": "^1.4.0"
   },
